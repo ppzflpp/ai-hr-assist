@@ -9,3 +9,9 @@ todo：
 备注：
 有想进一步了解的小伙伴可以加我微信进行详细沟通
 微信：ppzflpp，添加时请备注“hr简历助手”
+
+
+
+<h3>运行截图</h3>
+<img width="833" alt="1" src="https://github.com/ppzflpp/ai-hr-assist/blob/master/screenshot/1.png">
+<img width="833" alt="1" src="https://github.com/ppzflpp/ai-hr-assist/blob/master/screenshot/1.png">
