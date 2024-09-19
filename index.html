@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI简历助手</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+     /* 重置默认样式 */
+    progress {
+      -webkit-appearance: none; /* For Safari and Chrome */
+      -moz-appearance: none;    /* For Firefox */
+      appearance: none;         /* Standard property */
+      width: 100%;
+      height: 30px;
+      border: none;
+      border-radius: 5px;
+      background-color: #f3f3f3;
+    }
+    
+    /* 设置进度条填充颜色 */
+    progress::-webkit-progress-bar {
+      background-color: #f3f3f3;
+    }
+    
+    progress::-webkit-progress-value {
+      background-color: #007bff;
+    }
+    
+    /* For Firefox */
+    progress::-moz-progress-bar {
+      background-color: #007bff;
+    }
+    
+    /* 渐变效果（可选） */
+    .gradient-progress::-webkit-progress-value {
+      background: linear-gradient(to right, #007bff, #007bff);
+    }
+    
+    .gradient-progress::-moz-progress-bar {
+      background: linear-gradient(to right, #007bff,#007bff);
+    }
+
+    /* 进度条样式 */
+    .progress-bar {
+      height: 10px;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      display: none; /* 默认隐藏 */
+      position: relative;
+    }
+    .progress-bar-inner {
+      height: 10px;
+      width: 100%;
+      color: #007bff;
+      border-radius: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .top-section {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      padding: 20px;
+      background-color: #f4f4f9;
+    }
+    .pdf-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      margin-right: 20px;
+      background-color: #ffffff;
+      border: 1px solid #e1e1e1;
+    }
+    .pdf-tools {
+      margin-bottom: 20px;
+    }
+    .pdf-list {
+      flex: 1;
+      overflow-y: auto;
+    }
+    .pdf-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .pdf-checkbox {
+      margin-right: 10px;
+    }
+    .results-section {
+      flex: 2;
+      padding: 10px;
+      background-color: #ffffff;
+      border: 1px solid #e1e1e1;
+    }
+    .chat-section {
+      height: 300px;
+      padding: 20px;
+      background-color: #e9e9f4;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #e1e1e1;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease; /* 添加过渡效果 */
+    }
+    .card:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 悬停时的阴影 */
+    }
+    .card-header {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .card-age {
+      margin-bottom: 10px;
+    }
+    .card-school {
+      margin-bottom: 10px;
+    }
+    .card-expr {
+      margin-bottom: 10px;
+    }
+    .card-content {
+      margin-bottom: 10px;
+    }
+    .results-list-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .results-section {
+      flex: 2;
+      padding: 10px;
+      background-color: #ffffff;
+      border: 1px solid #e1e1e1;
+    }
+
+    #selectPdfBtn {
+      background-color: #007bff;
+    }
+    #sendBtn {
+      background-color: #28a745;
+    }
+    #chatInput {
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #e1e1e1;
+      border-radius: 5px;
+    }
+    #results {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f9f9ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-section">
+    <div class="pdf-section">
+      <div class="pdf-tools">
+        <button id="selectPdfBtn" class="button">请选择简历</button>
+        <h5>简历列表</h5>
+      </div>
+      <div class="pdf-list">
+        <!-- PDF List Items will be added here dynamically -->
+      </div>
+    </div>
+    <div class="results-section">
+      <h1>筛选结果</h1>
+      <div id="results" class="results-list-section"></div>
+    </div>
+  </div>
+ 
+  <div class="chat-section">
+    <div id="progress-bar" class="progress-bar">
+      <progress id="progress-bar-inner" class="progress-bar-inner" max="100" value="0"></progress>
+    </div>
+    <h1>筛选简历</h1>
+    <textarea id="chatInput" placeholder="请输入筛选条件"></textarea>
+    <button id="sendBtn" class="button">查询</button>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
